@@ -22,6 +22,8 @@ Pod::Spec.new do |spec|
     subspec.xcconfig         = { 'OTHER_LDFLAGS' => '-lc++ -ObjC'}
   end
 
+  spec.module_map       = 'PayPalMobile/PayPalMobile.modulemap'
+
   spec.subspec 'CardIO' do |subspec|
     subspec.dependency       'CardIO', '~> 5.4.1'
   end
