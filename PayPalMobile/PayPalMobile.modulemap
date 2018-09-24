@@ -1,6 +1,0 @@
-framework module PayPalMobile {
-  umbrella header "PayPalMobile.h"
-
-  export *
-  module * { export * }
-}

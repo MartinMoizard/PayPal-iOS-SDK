@@ -14,15 +14,16 @@ Pod::Spec.new do |spec|
   spec.default_subspec = 'Core', 'CardIO'
 
   spec.subspec 'Core' do |subspec|
-    subspec.source_files     = [ 'PayPalMobile/*.h' ]
+    subspec.source_files     = [ 'PayPalMobile/*.h', 'PayPalMobile/PayPalMobile-Bridging.h' ]
     subspec.preserve_path    = [ 'PayPalMobile/*.a' ]
     subspec.frameworks       = 'Accelerate', 'AudioToolbox', 'AVFoundation', 'CoreLocation', 'CoreMedia', 'MessageUI', 'MobileCoreServices', 'SystemConfiguration'
     subspec.vendored_libraries = [ 'PayPalMobile/libPayPalMobile.a' ]
     subspec.compiler_flags   = '-fmodules', '-fmodules-autolink'
     subspec.xcconfig         = { 'OTHER_LDFLAGS' => '-lc++ -ObjC'}
+    subspec.pod_target_xcconfig = {
+      "SWIFT_OBJC_BRIDGING_HEADER" => "${POD_ROOT}/PayPalMobile/PayPalMobile-Bridging.h"
+    }
   end
-
-  spec.module_map       = 'PayPalMobile/PayPalMobile.modulemap'
 
   spec.subspec 'CardIO' do |subspec|
     subspec.dependency       'CardIO', '~> 5.4.1'
